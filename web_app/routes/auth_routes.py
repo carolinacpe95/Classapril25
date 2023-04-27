@@ -8,7 +8,7 @@ auth_routes = Blueprint("auth_routes", __name__)
 def login():
     print("LOGIN...")
     return render_template("login.html")
-
+#> prevent access from seing that page and redirect it to the login page
 @auth_routes.route("/auth/google/login")
 def google_login():
     print("GOOGLE OAUTH LOGIN...")
@@ -46,7 +46,7 @@ def google_oauth_callback():
         print("... NAME:", user_info["name"])
         print("... LOCALE:", user_info["locale"])
 
-        # add user info to the session
+        # add user info to the session , storing user in the session
         session["current_user"] = user_info
 
         return redirect("/user/profile")
